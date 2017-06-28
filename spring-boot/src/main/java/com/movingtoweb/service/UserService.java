@@ -1,5 +1,8 @@
 package com.movingtoweb.service;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.movingtoweb.model.Users;
 import com.movingtoweb.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +39,23 @@ public class UserService {
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
     public List<Users> getUsers(@PathVariable final String name) {
         return usersRepository.findByName(name);
+    }
+    
+    
+
+    @RequestMapping(value = "/passFile", method = RequestMethod.POST)
+    public List<Users> passFile(@RequestBody final String url) throws JsonParseException, JsonMappingException, IOException {
+    	System.out.println("URL link ::"+url);
+        List<Users> userses = new ArrayList<>();
+        RestTemplate restTemplate = new RestTemplate();
+        //restTemplate.postForObject("/users/load", users, List.class);
+        //Users users = (Users) restTemplate.getForObject(url, String.class);
+        String jsonData= restTemplate.getForObject(url, String.class);
+        System.out.println("Data : " +jsonData);
+        Users user = new ObjectMapper().readValue(jsonData, Users.class);
+        System.out.println("conveterd object  : " +user.toString());
+        usersRepository.save(user);
+        userses.add(user);
+        return userses ;
     }
 }
