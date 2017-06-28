@@ -1,0 +1,15 @@
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+# [START appyaml]
+runtime: java
+env: flex
+
+
+handlers:
+- url: /.*
+  script: this field is required, but ignored
+
+health_check:
+ enable_health_check: False
+# [END appyaml]

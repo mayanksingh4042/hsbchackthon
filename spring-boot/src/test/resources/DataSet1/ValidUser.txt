@@ -1,2 +1,0 @@
-{ "name": "Ajay", "teamName": "Development", "salary": 100 }
-{ "name": "Sham", "teamName": "Test", "salary": 200 }

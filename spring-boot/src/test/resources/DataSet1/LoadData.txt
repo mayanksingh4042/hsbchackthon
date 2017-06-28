@@ -1,8 +1,0 @@
-{ "name": "Ajay", "teamName": "Development", "salary": 100 }
-{ "name": "Sham", "teamName": "Test", "salary": 200 }
-{ "name": "Ram",  "teamName": "Development", "salary": 300 }
-{ "name": "Mahesh","teamName": "Test", "salary": 400 }
-{ "name": "Sham", "teamName": "Development", "salary": 500 }
-{ "name": "Ram", "teamName": "Test", "salary": 600 }
-{ "name": "Gopal", "teamName": "Development", "salary": 700 }
-{ "name": "Meera", "teamName": "Test", "salary": 800 }
