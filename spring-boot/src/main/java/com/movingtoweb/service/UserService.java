@@ -36,6 +36,11 @@ public class UserService {
         return usersRepository.save(userses);
     }
 
+    @RequestMapping(value = "/multipleData", method = RequestMethod.POST)
+    public List<Users> multipleData(@RequestBody final List<Users> users) {
+          return usersRepository.save(users);
+    }
+    
     @RequestMapping(value = "/name/{name}", method = RequestMethod.GET)
     public List<Users> getUsers(@PathVariable final String name) {
         return usersRepository.findByName(name);
@@ -43,8 +48,8 @@ public class UserService {
     
     
 
-    @RequestMapping(value = "/passFile", method = RequestMethod.POST)
-    public List<Users> passFile(@RequestBody final String url) throws JsonParseException, JsonMappingException, IOException {
+    @RequestMapping(value = "/loadInMemory", method = RequestMethod.POST)
+    public List<Users> loadInMemory(@RequestBody final String url) throws JsonParseException, JsonMappingException, IOException {
     	System.out.println("URL link ::"+url);
         List<Users> userses = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();

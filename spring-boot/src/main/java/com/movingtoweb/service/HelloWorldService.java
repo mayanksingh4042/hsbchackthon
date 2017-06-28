@@ -12,10 +12,7 @@ public class HelloWorldService {
     @Autowired
     private ConfigurationSettings configurationSettings;
 
-    @RequestMapping(value = "")
-    public String getGreeting() {
-        return configurationSettings.getGreeting();
-    }
+
     @RequestMapping(value = "/name")
     public String getName() {
         return configurationSettings.getName();
